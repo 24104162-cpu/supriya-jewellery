@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -14,9 +17,12 @@ app.use(express.json());
 // ===============================
 // MongoDB Connection
 // ===============================
-
+console.log(
+  "MONGODB_URI loaded:",
+  process.env.MONGODB_URI ? "YES" : "NO"
+);
 mongoose
-  .connect("mongodb://127.0.0.1:27017/supriya_jewellery")
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connected successfully");
   })
@@ -173,7 +179,7 @@ app.get("/api/orders/:id", async (req, res) => {
 // START SERVER
 // ===============================
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
