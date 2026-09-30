@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 
 dotenv.config();
+
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -17,21 +18,17 @@ app.use(express.json());
 // ===============================
 // MongoDB Connection
 // ===============================
+
 console.log(
   "MONGODB_URI loaded:",
   process.env.MONGODB_URI ? "YES" : "NO"
 );
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connected successfully");
     console.log("Database name:", mongoose.connection.name);
-  })
-  .catch((error) => {
-    console.error("MongoDB connection failed:", error);
-  });
-  .then(() => {
-    console.log("MongoDB connected successfully");
   })
   .catch((error) => {
     console.error("MongoDB connection failed:", error);
@@ -82,6 +79,8 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
+
+// Test route
 app.get("/test", (req, res) => {
   res.send("TEST ROUTE WORKS");
 });
