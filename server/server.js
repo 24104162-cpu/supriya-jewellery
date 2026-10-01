@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
+    console.log("Product count:", products.length);
 
     res.json(products);
   } catch (error) {
