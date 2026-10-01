@@ -168,7 +168,7 @@ function App() {
   const [productsError, setProductsError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://supriya-jewellery.onrender.com/api/products")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch products");
@@ -761,7 +761,7 @@ function App() {
 
                 try {
                   const response = await fetch(
-                    "http://localhost:5000/api/orders",
+                    "https://supriya-jewellery.onrender.com/api/orders",
                     {
                       method: "POST",
                       headers: {
